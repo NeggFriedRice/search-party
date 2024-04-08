@@ -3,28 +3,13 @@ import StackSearch from './components/StackSearch'
 
 function App() {
 
-  
-  const [ stackResults , setStackResults] = useState(null)
-  const [ searchTerm, setSearchTerm ] = useState(null)
-
-  // useEffect(() => {
-  //     searchStack()
-  // }, [])
-
-  async function searchStack() {
-      try {
-      await fetch(`https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle=${searchTerm}&site=stackoverflow`)
-      .then( data => data.json())
-      .then( response => setStackResults(response.items))
-      } catch (err) {
-          console.log(err)
-      }
-  }
+  const [ searchTerm, setSearchTerm ] = useState("")
+  const [ trigger, setTrigger] = useState(false)
 
   // Re-run API call with new search term
   function searchSubmit(event) {
     event.preventDefault()
-    searchStack()
+    setTrigger(state => !state)
   }
 
   // Handle search term input
@@ -39,7 +24,7 @@ function App() {
         <input type="text" placeholder="Search here" value={searchTerm} onChange={inputChangeHandler}></input>
         <button type="submit">Search</button>
       </form>
-      <StackSearch stackResults={stackResults} />
+      <StackSearch searchTerm={searchTerm} trigger={trigger} />
     </>
   )
 }
