@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import StackSearch from './components/StackSearch'
 import YouTubeSearch from './components/YouTubeSearch'
+import RedditSearch from './components/RedditSearch'
 
 function App() {
 
@@ -25,8 +26,9 @@ function App() {
         <input type="text" placeholder="Search here" value={searchTerm} onChange={inputChangeHandler}></input>
         <button type="submit">Search</button>
       </form>
-      <StackSearch searchTerm={ searchTerm } trigger={ trigger } />
-      <YouTubeSearch searchTerm={ searchTerm } trigger ={ trigger }/>
+      {/* <StackSearch searchTerm={ searchTerm } trigger={ trigger } />
+      <YouTubeSearch searchTerm={ searchTerm } trigger ={ trigger }/> */}
+      <RedditSearch searchTerm={ searchTerm } trigger={ trigger } />
     </>
   )
 }
