@@ -25,11 +25,11 @@ export default function StackSearch({searchTerm, trigger}) {
 
     return (
         <>
-        <div className="bg-blue-800">
-            <h1 className="text-[26px] px-2">Stack Overflow</h1>
+        <div className="">
+            <h1 className="text-[26px] px-2 bg-fallCol2 rounded-r-lg">Stack Overflow</h1>
             {stackResults && 
             stackResults.slice(0, maxResults).map((entry, index) =>
-                <p key={index} className="p-2">{entry.title}</p>)}
+                <p key={index} className="py-2 px-2 gap-2 bg-gray-200 my-3 text-black">{entry.title}</p>)}
         </div>
         </>
     )

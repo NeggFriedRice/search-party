@@ -28,7 +28,7 @@ function App() {
         </div>
         <div className="flex justify-center">
           <form onSubmit={searchSubmit}>
-            <input type="text" placeholder="Get ya search on! 🔎" value={searchTerm} onChange={inputChangeHandler} className="w-[50vw] h-[2rem] focus:h-[3rem] px-2 rounded-lg bg-setCol4 transition-all duration-300"></input>
+            <input type="text" placeholder="Get ya search on! 🔎" value={searchTerm} onChange={inputChangeHandler} className="w-[50vw] h-[2rem] focus:h-[3rem] px-2 rounded-lg bg-setCol4 transition-all duration-300 text-slate-800"></input>
             <button type="submit" className="mx-2 px-2 py-1 rounded-lg bg-setCol2">Search</button>
           </form>
        </div>

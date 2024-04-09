@@ -13,7 +13,11 @@ export default {
         setCol4: '#F8F1F1',
         fallCol1: '#FFBB5C',
         fallCol2: '#FF9B50',
-        fallCol3: '#E25E3E'
+        fallCol3: '#E25E3E',
+        fallCol4: '#FFD8A9',
+        fallCol5: '#F1A661',
+        fallCol6:  '#E38B29',
+        redditRed: '#ff4500'
       }
     },
   },

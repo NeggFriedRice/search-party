@@ -26,10 +26,10 @@ export default function RedditSearch({ searchTerm, trigger }) {
     return (
       <>
         <div className="">
-            <h1 className="text-[26px] px-2">Reddit</h1>
+            <h1 className="text-[26px] px-2 bg-redditRed text-white rounded-r-lg">Reddit</h1>
             {redditPosts && 
             redditPosts.slice(0, maxResults).map((post, index) =>
-            <div className="py-2 px-2">
+            <div className="py-2 px-2 gap-2 bg-gray-100 my-3 text-black">
                 <p key={index}>{post.data.title}</p>
             </div>)}
         </div>
