@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react'
 export default function RedditSearch({ searchTerm, trigger }) {
 
     const [redditPosts, setRedditPosts] = useState(null)
+    const [maxResults, setMaxResults] = useState(5)
 
     async function getRedditPosts() {
         if (!searchTerm) {
             return
         } else {
             try {
-                await fetch('https://www.reddit.com/r/subreddit/search.json?q=useeffect not working')
+                await fetch(`https://www.reddit.com/r/subreddit/search.json?q=${searchTerm}`)
                 .then(response => response.json())
                 .then(data => setRedditPosts(data.data.children))
             } catch (err) {
@@ -24,11 +25,13 @@ export default function RedditSearch({ searchTerm, trigger }) {
 
     return (
       <>
-        <div className="bg-blue-800">
-            <h1 className="text-[26px]">RedditSearch</h1>
+        <div className="">
+            <h1 className="text-[26px] px-2">Reddit</h1>
             {redditPosts && 
-            redditPosts.slice(0, 5).map((post, index) =>
-                <p key={index}>{post.data.title}</p>)}
+            redditPosts.slice(0, maxResults).map((post, index) =>
+            <div className="py-2 px-2">
+                <p key={index}>{post.data.title}</p>
+            </div>)}
         </div>
       </>
     )

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 export default function StackSearch({searchTerm, trigger}) {
 
     const [ stackResults , setStackResults] = useState(null)
+    const [maxResults, setMaxResults] = useState(5)
 
     useEffect(() => {
         searchStack()
@@ -25,10 +26,10 @@ export default function StackSearch({searchTerm, trigger}) {
     return (
         <>
         <div className="bg-blue-800">
-            <h1 className="text-[26px]">StackSearch</h1>
+            <h1 className="text-[26px] px-2">Stack Overflow</h1>
             {stackResults && 
-            stackResults.slice(0, 5).map((entry, index) =>
-                <p key={index}>{entry.title}</p>)}
+            stackResults.slice(0, maxResults).map((entry, index) =>
+                <p key={index} className="p-2">{entry.title}</p>)}
         </div>
         </>
     )

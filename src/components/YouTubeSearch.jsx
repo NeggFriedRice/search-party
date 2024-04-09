@@ -4,6 +4,7 @@ import { htmlEscape, htmlUnescape } from 'escape-goat'
 export default function YouTubeSearch({ searchTerm, trigger }) {
 
     const [videos, setVideos] = useState(null)
+    const [maxResults, setMaxResults] = useState(5)
 
     useEffect(() => {
         searchYoutube()
@@ -14,7 +15,7 @@ export default function YouTubeSearch({ searchTerm, trigger }) {
             return
         } else {
             try {
-                await fetch(`https://www.googleapis.com/youtube/v3/search?key=${import.meta.env.VITE_GOOGLE_API_KEY}&q=${searchTerm}&type=video&part=snippet&maxResults=10`)
+                await fetch(`https://www.googleapis.com/youtube/v3/search?key=${import.meta.env.VITE_GOOGLE_API_KEY}&q=${searchTerm}&type=video&part=snippet&maxResults=100`)
                 .then(response => response.json())
                 .then(data => setVideos(data.items))
                 console.log(videos)
@@ -24,16 +25,26 @@ export default function YouTubeSearch({ searchTerm, trigger }) {
         }
     }
 
+    function increaseMaxResults() {
+        setMaxResults(maxResults + 5)
+    }
+
     return (
         <>
-            <div className="">
-                <h1 className="text-[26px]">YouTube Search</h1>
+            <div className="bg-red-300">
+                <h1 className="text-[26px] px-2">YouTube</h1>
                 {videos && 
-                videos.slice(0, 5).map((video, index) => 
-                <div className="flex">
-                <img src={`https://img.youtube.com/vi/${video.id.videoId}/default.jpg`}/>
-                <p key={index}>{htmlUnescape(video.snippet.title)}</p>
-                </div>)
+                videos.slice(0, maxResults).map((video, index) => 
+                <div className="flex p-2 place-items-center gap-2">
+                    <img src={`https://img.youtube.com/vi/${video.id.videoId}/default.jpg`}/>
+                    <p key={index}>{htmlUnescape(video.snippet.title)}</p>
+                </div>)}
+                {videos &&
+                <button 
+                onClick={increaseMaxResults} 
+                className="bg-slate-500 px-2 rounded-lg m-2">
+                    More
+                </button>
                 }
             </div>
         </>

@@ -20,16 +20,25 @@ function App() {
   }
 
   return (
-    <>
-      <p>Hello</p>
-      <form onSubmit={searchSubmit}>
-        <input type="text" placeholder="Search here" value={searchTerm} onChange={inputChangeHandler}></input>
-        <button type="submit">Search</button>
-      </form>
-      {/* <StackSearch searchTerm={ searchTerm } trigger={ trigger } /> */}
+    <div className="flex justify-center pt-8">
+      <div className="w-[80%]">
+        <div className="text-center py-3">
+          <h1 className="text-[1.5rem]">Search Party</h1>
+          <p>The best multi-website search...<em>probably</em></p>
+        </div>
+        <div className="flex justify-center">
+          <form onSubmit={searchSubmit}>
+            <input type="text" placeholder="Get ya search on! 🔎" value={searchTerm} onChange={inputChangeHandler} className="w-[50vw] h-[2rem] focus:h-[3rem] px-2 rounded-lg bg-setCol4 transition-all duration-300"></input>
+            <button type="submit" className="mx-2 px-2 py-1 rounded-lg bg-setCol2">Search</button>
+          </form>
+       </div>
+      <div className="grid grid-cols-3 gap-8 pt-8">
       <YouTubeSearch searchTerm={ searchTerm } trigger ={ trigger }/>
       <RedditSearch searchTerm={ searchTerm } trigger={ trigger } />
-    </>
+      <StackSearch searchTerm={ searchTerm } trigger={ trigger } />
+      </div>
+      </div>
+    </div>
   )
 }
 
