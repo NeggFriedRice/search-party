@@ -17,6 +17,7 @@ export default function YouTubeSearch({ searchTerm, trigger }) {
                 await fetch(`https://www.googleapis.com/youtube/v3/search?key=${import.meta.env.VITE_GOOGLE_API_KEY}&q=${searchTerm}&type=video&part=snippet&maxResults=10`)
                 .then(response => response.json())
                 .then(data => setVideos(data.items))
+                console.log(videos)
             } catch (err) {
                 console.log(err)
             }
@@ -25,11 +26,16 @@ export default function YouTubeSearch({ searchTerm, trigger }) {
 
     return (
         <>
-            <div>YouTube Search</div>
-            {videos && 
-            videos.slice(0, 5).map((video, index) => 
-            <p key={index}>{htmlUnescape(video.snippet.title)}</p>)
-            }
+            <div className="">
+                <h1 className="text-[26px]">YouTube Search</h1>
+                {videos && 
+                videos.slice(0, 5).map((video, index) => 
+                <div className="flex">
+                <img src={`https://img.youtube.com/vi/${video.id.videoId}/default.jpg`}/>
+                <p key={index}>{htmlUnescape(video.snippet.title)}</p>
+                </div>)
+                }
+            </div>
         </>
     )
 }

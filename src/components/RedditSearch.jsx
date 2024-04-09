@@ -25,7 +25,7 @@ export default function RedditSearch({ searchTerm, trigger }) {
     return (
       <>
         <div className="bg-blue-800">
-            <div className="text-[26px]">RedditSearch</div>
+            <h1 className="text-[26px]">RedditSearch</h1>
             {redditPosts && 
             redditPosts.slice(0, 5).map((post, index) =>
                 <p key={index}>{post.data.title}</p>)}

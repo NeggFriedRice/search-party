@@ -25,7 +25,7 @@ export default function StackSearch({searchTerm, trigger}) {
     return (
         <>
         <div className="bg-blue-800">
-            <div className="text-[26px]">StackSearch</div>
+            <h1 className="text-[26px]">StackSearch</h1>
             {stackResults && 
             stackResults.slice(0, 5).map((entry, index) =>
                 <p key={index}>{entry.title}</p>)}
